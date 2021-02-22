@@ -7,73 +7,26 @@ fi
 
 # Essential
 source ~/.zplug/init.zsh
+source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
+source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
-zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh", defer:0
-zplug "plugins/brew",   from:oh-my-zsh
-zplug "plugins/bundler",   from:oh-my-zsh
-zplug "plugins/cp",   from:oh-my-zsh
-zplug "plugins/dnf",   from:oh-my-zsh
-zplug "plugins/docker",   from:oh-my-zsh
-zplug "plugins/docker-compose",   from:oh-my-zsh
-zplug "plugins/gem",   from:oh-my-zsh
-zplug "plugins/git",   from:oh-my-zsh, defer:3
-zplug "plugins/golang",   from:oh-my-zsh, defer:3
-zplug "plugins/gpg-agent",   from:oh-my-zsh
-zplug "plugins/history",   from:oh-my-zsh, defer:3
-zplug "plugins/httpie",   from:oh-my-zsh, defer:3
-zplug "plugins/mvn",   from:oh-my-zsh
-zplug "lukechilds/zsh-nvm"
-zplug "lukechilds/zsh-better-npm-completion", defer:3
-zplug "plugins/node",   from:oh-my-zsh
-zplug "plugins/npm",   from:oh-my-zsh
-zplug "plugins/rake",   from:oh-my-zsh
-zplug "plugins/rsync",   from:oh-my-zsh
-zplug "plugins/ruby",   from:oh-my-zsh
-zplug "plugins/shrink-path",   from:oh-my-zsh
-zplug "plugins/ssh-agent",   from:oh-my-zsh
-zplug "plugins/systemd",   from:oh-my-zsh
-zplug "plugins/tmux",   from:oh-my-zsh, defer:3
-zplug "plugins/kubectl",   from:oh-my-zsh, defer:3
-zplug "plugins/vagrant",   from:oh-my-zsh
-zplug "plugins/z",   from:oh-my-zsh
-zplug "plugins/zsh_reload",   from:oh-my-zsh
-zplug "k4rthik/git-cal", as:command
-zplug "michaeldfallen/git-radar", as:command, use:git-radar
-zplug "ndbroadbent/scm_breeze", hook-build:"$ZPLUG_HOME/repos/ndbroadbent/scm_breeze/install.sh"
-zplug "djui/alias-tips"
-zplug "supercrabtree/k"
-zplug "chriskempson/base16-shell", use:"base16-3024.dark.sh"
 zplug "zsh-users/zsh-completions", use:src
 zplug "zsh-users/zsh-autosuggestions", defer:3
 zplug "zsh-users/zsh-syntax-highlighting", defer:3
 zplug "zsh-users/zsh-history-substring-search", defer:3
-zplug "knu/zsh-manydots-magic"
-zplug "mafredri/zsh-async"
-zplug "so-fancy/diff-so-fancy", as:command
-zplug "Masterminds/glide", as:command, from:gh-r, use:"*linux*amd64*", rename-to:glide
-zplug "jimmidyson/07b69911f783e3afd8cd4c8f8358c8f6", from:gist, defer:3
-zplug "openshift/source-to-image", \
-  as:command, \
-  from:gh-r, \
-  use:"*linux*amd64*", \
-  rename-to:s2i
 
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
+#if ! zplug check --verbose; then
+#    printf "Install? [y/N]: "
+#    if read -q; then
+#        echo; zplug install
+#    fi
+#fi
 
 zplug load
 
 export TERM="xterm-256color"
-export ZSH="/Users/david/.oh-my-zsh"
-
-source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
 
 ZSH_THEME="materialshell"
-# ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE='nerdfont-complete'
 
 # Add kubernetes version
@@ -148,99 +101,9 @@ POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='yellow'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context custom_kubernetes_context battery dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status dir_writable time ip ram load background_jobs)
 
-# Customise the Powerlevel9k prompts
-#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh dir vcs)
-#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator time)
+#[ -s "/Users/david.calleja/.scm_breeze/scm_breeze.sh" ] && source "/Users/david.calleja/.scm_breeze/scm_breeze.sh"
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "$HOME/Applications/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/Applications/google-cloud-sdk/path.zsh.inc"; fi
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git kubectl)
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-#[ -s "/home/david/.scm_breeze/scm_breeze.sh" ] && source "/home/david/.scm_breeze/scm_breeze.sh"
-#alias ls='ls -G'
-#
-#[ -s "/root/.scm_breeze/scm_breeze.sh" ] && source "/root/.scm_breeze/scm_breeze.sh"
-#alias ls='ls -G'
-
-[ -s "/Users/david/.scm_breeze/scm_breeze.sh" ] && source "/Users/david/.scm_breeze/scm_breeze.sh"
+# The next line enables shell command completion for gcloud.
+if [ -f "$HOME/Applications/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/Applications/google-cloud-sdk/completion.zsh.inc"; fi

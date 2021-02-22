@@ -219,3 +219,5 @@ source $ZSH/oh-my-zsh.sh
 #
 #[ -s "/root/.scm_breeze/scm_breeze.sh" ] && source "/root/.scm_breeze/scm_breeze.sh"
 #alias ls='ls -G'
+
+[ -s "/Users/david.calleja/.scm_breeze/scm_breeze.sh" ] && source "/Users/david.calleja/.scm_breeze/scm_breeze.sh"
